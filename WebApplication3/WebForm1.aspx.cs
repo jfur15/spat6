@@ -40,6 +40,8 @@ namespace WebApplication3
         {
 
             //this is good
+
+            //TODO: Check for empty text boxes
             articleInit(divTextbox.Controls.OfType<TextBox>().Select(o =>o.Text).ToList());
         }
 
@@ -56,10 +58,51 @@ namespace WebApplication3
         {
             List<Article> allArticles = new List<Article>();
             //TODO: clean the URL's, throw out improper ones
+
+            foreach (String s in urls)
+            {
+                //Change color of textbox?
+
+                // Is anything in the textbox?
+                if (!string.IsNullOrEmpty(s))
+                {
+                    // Is it actually a URL?
+                    if (Uri.IsWellFormedUriString(s, UriKind.Absolute))
+                    {
+                        // Create new article object and add it to list of all articles
+                        Article newArticle = new Article(s);
+                        allArticles.Add(newArticle);
+                    }
+                    else
+                    {
+                        //Change color of TextBox?
+
+                        //Alert user of invalid input
+                        String x = "Invalid input: " + s + " is not a valid URL.";
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + x  + "');", true);
+                    }
+                }
+            }
+
+
             //then Pass them to URLGet
+            for (int i = 0; i < allArticles.Count; i++) { URLGet(allArticles[i]); }
+
             //then instantiate each Article object and return as a list to be output to GUI and/or condensed into finalarticle
+
             return allArticles;
-        }
+
+            //Output compared articles to main window
+
+            /*
+            foreach (Article A in allArticles)
+                {
+                //Comparing and appending articles
+
+                } */
+
+            }
+
 
         // Retrieve text from webpage in paragraph form based on URL and assign to passed in Article object
         private void URLGet(Article anArticle)
