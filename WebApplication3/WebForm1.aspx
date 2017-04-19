@@ -60,7 +60,7 @@
         <div style="float: right; width: 516px; height: 470px;">
             <asp:Button ID="buttonClear" runat="server" Text="Clear" />
             <br />
-            <asp:TextBox ID="textBoxFinal" runat="server" Height="426px" Width="530px"></asp:TextBox>
+            <asp:TextBox ID="textBoxFinal" runat="server" Height="100%" Width="100%" TextMode="MultiLine"></asp:TextBox>
         </div>
     
     </div>

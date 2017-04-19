@@ -57,6 +57,7 @@ namespace WebApplication3
         protected List<Article> articleInit(List<string> urls)
         {
             List<Article> allArticles = new List<Article>();
+            List<ComparisonPool> pooledParagraphs = new List<ComparisonPool>();
             //TODO: clean the URL's, throw out improper ones
 
             foreach (String s in urls)
@@ -90,16 +91,70 @@ namespace WebApplication3
 
             //then instantiate each Article object and return as a list to be output to GUI and/or condensed into finalarticle
 
-            return allArticles;
 
-            //Output compared articles to main window
+            tempSentenceProcess(allArticles);
 
-            /*
+            // Format output to GUI. Create/Label a tab for each article and output text in paragraph form to RichTextBox in each.
+            // Also sentence tabs with ordered scores and shit
+            int idx = 1;
             foreach (Article A in allArticles)
+            {
+                foreach (Paragraph p in A.paragraphs)
                 {
-                //Comparing and appending articles
 
-                } */
+                    List<string>[] cls = { p.listDates, p.listPersons, p.listLocations, p.listOrganizations };
+                    string[] classiferNames = { "DATE", "PERSON", "LOCATION", "ORGANIZATION" };
+
+                bool paragraphAdded = false;
+                for (int i = 0; i < cls.Length; i++)
+                {
+
+                    foreach (string entity in cls[i])
+                    {
+
+                        if (p.Text.Contains("attacks on the press"))
+                        {
+                            int x = 1;
+                        }
+                            if (classiferNames[i] == "PERSON" || classiferNames[i] == "LOCATION" || classiferNames[i] == "ORGANIZATION")
+                            {
+
+                                bool existingClassifier = false;
+                                foreach (ComparisonPool C in pooledParagraphs)
+                                {
+                                    if (C.Classifier == entity)
+                                    {
+                                        if (!paragraphAdded)
+                                        {
+                                            C.addParagraph(p);
+                                            paragraphAdded = true;
+                                        }
+                                        existingClassifier = true;
+                                        break;
+                                    }
+                                }
+                                if (existingClassifier == false && !paragraphAdded)
+                                {
+                                    ComparisonPool temp = new ComparisonPool(entity);
+                                    pooledParagraphs.Add(temp);
+                                    temp.addParagraph(p);
+                                    paragraphAdded = false;
+                                    i = cls.Length;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+
+            foreach (Paragraph pp in comparison(pooledParagraphs))
+            {
+                textBoxFinal.Text += pp.Text + "\n\n\n";
+            }
+
+            return allArticles;
 
             }
 
@@ -123,6 +178,140 @@ namespace WebApplication3
                 {
                     anArticle.AddParagraph(System.Net.WebUtility.HtmlDecode(node.InnerText));
                 }
+            }
+        }
+
+        //Throws out all pargraphs with grade lower than 1
+        //Supposed to hold all comparison logic
+        private void tempSentenceProcess(List<Article> allArticles)
+        {
+            foreach (Article a in allArticles)
+            {
+                //This holds all sentences with a grade higher than 1
+                List<Paragraph> tempParagraphs = new List<Paragraph>();
+
+                for (int sidx = 0; sidx < a.paragraphs.Count; sidx++)
+                {
+                    if (a.paragraphs[sidx].Grade > 1 && !tempParagraphs.Contains(a.paragraphs[sidx]))
+                    {
+                        tempParagraphs.Add(a.paragraphs[sidx]);
+                    }
+                }
+
+                //Rewrites the original sentence list with the reconstructed one
+                a.paragraphs = tempParagraphs;
+            }
+
+        }
+
+
+        //Real comparison
+        private List<Paragraph> comparison(List<ComparisonPool> pooledParagraphs)
+        {
+
+            List<ComparisonPool> tempPooled = new List<ComparisonPool>();
+            foreach (ComparisonPool C in pooledParagraphs)
+            {
+                if (C.Pool.Count > 2)
+                {
+                    tempPooled.Add(C);
+                }
+            }
+            pooledParagraphs = tempPooled;
+
+            List<Paragraph> finalParagraphs = new List<Paragraph>();
+            Paragraph tempParagraph;
+
+
+
+            foreach (ComparisonPool C in pooledParagraphs)
+            {
+                List<Paragraph> tempPool = new List<Paragraph>();
+                foreach (Paragraph p1 in C.Pool.ToList())
+                {
+                    tempParagraph = p1;
+                    tempPool = new List<Paragraph>();
+                    foreach (Paragraph p2 in C.Pool.ToList())
+                    {
+                        if (p1.Text != p2.Text && !p1.Deleted && !p2.Deleted)
+                        {
+                            if (classifierCompare(p1.listClassifiers(), p2.listClassifiers()))
+                            {
+                                if (p1.Grade > p2.Grade)
+                                {
+                                    tempParagraph = p1;
+                                    //delete p2
+                                    p2.Deleted = true;
+                                }
+                                else if (p2.Grade > p1.Grade)
+                                {
+                                    tempParagraph = p2;
+                                    //delete p1
+                                    p1.Deleted = true;
+                                }
+                                else
+                                {
+                                    if (p1.Text.Length < p2.Text.Length)
+                                    {
+
+                                        tempParagraph = p2;
+                                        //delete p1
+                                        p1.Deleted = true;
+                                    }
+                                    else
+                                    {
+                                        tempParagraph = p1;
+                                        //delete p2
+                                        p2.Deleted = true;
+                                    }
+                                }
+                            }
+                            else if (p1.listClassifiers() != p2.listClassifiers())
+                            {
+                                continue;
+                            }
+                        }
+                    }
+
+                    finalParagraphs.Add(tempParagraph);
+                    C.Pool.RemoveAll(item => tempPool.Contains(item));
+                }
+
+            }
+            return finalParagraphs;
+        }
+
+        private bool classifierCompare(List<string> p1c, List<string> p2c)
+        {
+            List<string> cmpA;
+            List<string> cmpB;
+
+
+            if (p1c.Count > p2c.Count)
+            {
+                cmpA = p1c;
+                cmpB = p2c;
+            }
+            else
+            {
+                cmpB = p1c;
+                cmpA = p2c;
+            }
+            int sim = 0;
+            foreach (string smstring in cmpB)
+            {
+                if (cmpA.Contains(smstring))
+                {
+                    sim++;
+                }
+            }
+            if (sim > 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
