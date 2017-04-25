@@ -11,11 +11,11 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            h1.InnerText = "Helloo";
+           // h1.InnerText = "Helloo";
         }
         protected void thebutton_click(object sender, EventArgs e)
         {
-            h1.InnerText = "BUTTON WAS CLICKED";
+           // h1.InnerText = "BUTTON WAS CLICKED";
         }
     }
 }
