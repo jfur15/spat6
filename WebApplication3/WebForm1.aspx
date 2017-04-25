@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+      <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body style="height: 515px">
     <form id="form1" runat="server">
@@ -58,7 +61,7 @@
             <br />
         </div>
         <div style="float: right; width: 516px; height: 470px;">
-            <asp:Button ID="buttonClear" runat="server" Text="Clear" />
+            <asp:Button ID="buttonClear" class="btn btn-danger" runat="server" Text="Clear" />
             <br />
             <asp:TextBox ID="textBoxFinal" runat="server" Height="100%" Width="100%" TextMode="MultiLine"></asp:TextBox>
         </div>
