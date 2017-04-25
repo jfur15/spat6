@@ -218,6 +218,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bootstrap-United.css" />
     <Content Include="packages.config" />
     <Content Include="WebForm2.aspx" />
     <None Include="Web.Debug.config">
