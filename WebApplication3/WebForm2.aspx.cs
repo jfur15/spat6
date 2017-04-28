@@ -13,9 +13,20 @@ namespace WebApplication3
         {
            // h1.InnerText = "Helloo";
         }
-        protected void thebutton_click(object sender, EventArgs e)
+        protected void clearbutton_click(object sender, EventArgs e)
         {
-           // h1.InnerText = "BUTTON WAS CLICKED";
+            foreach (TextBox t in textboxdiv.Controls)
+            {
+                t.Text = "";
+            }
+        }
+        protected void submitbutton_click(object sender, EventArgs e)
+        {
+            List<string> urls = new List<string>();
+            foreach (TextBox t in textboxdiv.Controls.OfType<TextBox>())
+            {
+                urls.Add(t.Text);
+            }
         }
     }
 }

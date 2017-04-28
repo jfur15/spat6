@@ -28,10 +28,6 @@
             margin-top:2%;
         }
 
-        .form-group{
-            outline: solid 2px black;
-        }
-
   </style>
 </head> 
 <body>
@@ -45,25 +41,30 @@
                 </div>
 
                 <div class="col-lg-8">
-                    
-                    <div id="textboxdiv" runat="server" class="form-group" style="margin-top:20%">
-                    <h2">Article URLs</h2>
-                    <asp:TextBox class="form-control" runat="server" placeholder="URL"></asp:TextBox>
+                    <div style="text-align: center; margin-top:25%">
+                    <img src="http://i.imgur.com/ZgTFFgQ.png" style="width:50%"/>
+                         <br /> 
+                        <br /> 
+                        <hr  width="5%" />
+                         <br />
+                    <h4 style="padding-left:5%;padding-right:5%;"> 
+                        The objectively superior way to consume the mainstream media's lies.  <br /> <br />
+                        You give us the links, we do the rest. 
+                        Inform yourself using our scientifically sound methods. Insert catchy slogan here.
+                        Information wants to be free. <br />   <br />
                         
-                    <asp:TextBox class="form-control" runat="server" placeholder="URL"></asp:TextBox>
-
+</h4>
+                        <hr  width="5%" />
+                    <a href="WebForm2.aspx" class="btn btn-primary btn-md" runat="server">Plans start at $99/yr </a>
+                         <a href="WebForm2.aspx" class="btn btn-primary btn-md" runat="server">Get started free </a>    
+                     </div>
                     </div>
-                    <asp:Button runat="server" OnClick="submitbutton_click" class="btn btn-default" text="Submit"/>
-                    <asp:Button  runat="server" OnClick="clearbutton_click" class="btn btn-default" text="Clear"/>
                 </div>
-                <div class="col-lg-2">
-                    <br />
+                   <div class="col-lg-2">
+                       <br />
                 </div>
-
 
             </div>
-
-        </div>
     </form>
 </body>
 </html>
