@@ -16,20 +16,20 @@
 			-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover;
-
+           
             color:black;
 		}
 
         hr{
-            border:solid 5px black;
-            color:darkred;
+            
         }
         .btn{
             margin-top:2%;
         }
 
-        .form-group{
-            outline: solid 2px black;
+        .input-group{
+            padding: 10%;
+             background-color: rgba(225,225,225, 0.4);
         }
 
   </style>
@@ -46,15 +46,13 @@
 
                 <div class="col-lg-8">
                     
-                    <div id="textboxdiv" runat="server" class="form-group" style="margin-top:20%">
+                    <div id="textboxdiv" runat="server" class="input-group" style="margin-top:20%">
                     <h2">Article URLs</h2>
-                    <asp:TextBox class="form-control" runat="server" placeholder="URL"></asp:TextBox>
-                        
-                    <asp:TextBox class="form-control" runat="server" placeholder="URL"></asp:TextBox>
 
                     </div>
                     <asp:Button runat="server" OnClick="submitbutton_click" class="btn btn-default" text="Submit"/>
-                    <asp:Button  runat="server" OnClick="clearbutton_click" class="btn btn-default" text="Clear"/>
+                    <asp:Button runat="server" OnClick="temp_createnew" class="btn btn-default" text="Creat"/>
+                    <asp:Button  runat="server" OnClick="clearbutton_click" class="btn btn-default" text="Clear All"/>
                 </div>
                 <div class="col-lg-2">
                     <br />

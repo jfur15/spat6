@@ -36,13 +36,20 @@ namespace WebApplication3
             
         }
 
-        protected void submitButton_Click(object sender, EventArgs e)
+        protected void submitbutton_Click(object sender, EventArgs e)
         {
 
             //this is good
 
             //TODO: Check for empty text boxes
             articleInit(divTextbox.Controls.OfType<TextBox>().Select(o =>o.Text).ToList());
+        }
+        protected void clearbutton_click(object sender, EventArgs e)
+        {
+            foreach (TextBox t in divTextbox.Controls.OfType<TextBox>())
+            {
+                t.Text = "";
+            }
         }
 
         protected void buttonPreload_Click(object sender, EventArgs e)
@@ -151,7 +158,7 @@ namespace WebApplication3
 
             foreach (Paragraph pp in comparison(pooledParagraphs))
             {
-                textBoxFinal.Text += pp.Text + "\n\n\n";
+                textboxfinal.Text += pp.Text + "\n\n\n";
             }
 
             return allArticles;
