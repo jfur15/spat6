@@ -154,13 +154,20 @@ namespace WebApplication3
                     }
                 }
             }
-            
 
+
+
+            //HERE IS THE FINAL OUTPUT OK
+            string finalArticletext = "";
             foreach (Paragraph pp in comparison(pooledParagraphs))
             {
-                textboxfinal.Text += pp.Text + "\n\n\n";
+                finalArticletext += pp.Text + "\n\n\n";
             }
 
+            
+
+            this.Context.Items["newkey"] = finalArticletext;
+            Server.Transfer("finalArticle.aspx");
             return allArticles;
 
             }

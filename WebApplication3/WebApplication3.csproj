@@ -218,10 +218,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="finalArticle.aspx" />
     <Content Include="packages.config" />
-    <Content Include="WebForm2.aspx" />
-    <Content Include="WebForm3.aspx" />
-    <Content Include="WebForm4.aspx" />
+    <Content Include="splashPage.aspx" />
     <Content Include="WebForm5.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -232,41 +231,34 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
+    <Content Include="urlListPage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
     <Compile Include="ComparisonPool.cs" />
+    <Compile Include="finalArticle.aspx.cs">
+      <DependentUpon>finalArticle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="finalArticle.aspx.designer.cs">
+      <DependentUpon>finalArticle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NLPObjs.cs" />
     <Compile Include="Paragraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="urlListPage.aspx.cs">
+      <DependentUpon>urlListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="urlListPage.aspx.designer.cs">
+      <DependentUpon>urlListPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
+    <Compile Include="splashPage.aspx.cs">
+      <DependentUpon>splashPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm3.aspx.cs">
-      <DependentUpon>WebForm3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm3.aspx.designer.cs">
-      <DependentUpon>WebForm3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm4.aspx.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm4.aspx.designer.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
+    <Compile Include="splashPage.aspx.designer.cs">
+      <DependentUpon>splashPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm5.aspx.cs">
       <DependentUpon>WebForm5.aspx</DependentUpon>

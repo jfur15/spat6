@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication3.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="urlListPage.aspx.cs" Inherits="WebApplication3.WebForm1" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +65,6 @@
 
                 </div>
                 <div class="col-lg-2">
-                    <asp:Textbox runat="server" ID="textboxfinal" CssClass="form-control" placeholder="URL" />
                     <br />
                 </div>
 

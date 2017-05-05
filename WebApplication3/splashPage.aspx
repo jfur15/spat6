@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="WebApplication3.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="splashPage.aspx.cs" Inherits="WebApplication3.WebForm3" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,8 +55,8 @@
                         
 </h4>
                         <hr  width="5%" />
-                    <a href="WebForm2.aspx" class="btn btn-primary btn-md" runat="server">Plans start at $99/yr </a>
-                         <a href="WebForm2.aspx" class="btn btn-primary btn-md" runat="server">Get started free </a>    
+                    <a href="urlListPage.aspx" class="btn btn-primary btn-md" runat="server">Plans start at $99/yr </a>
+                         <a href="urlListPage.aspx" class="btn btn-primary btn-md" runat="server">Get started free </a>    
                      </div>
                     </div>
                 </div>
