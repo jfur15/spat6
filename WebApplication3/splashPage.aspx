@@ -11,7 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
       		body {
-			background: url( http://i.imgur.com/98NRuUJ.jpg) no-repeat center center fixed; 
+			background: write.jpg   no-repeat center center fixed; 
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
@@ -42,7 +42,7 @@
 
                 <div class="col-lg-8">
                     <div style="text-align: center; margin-top:25%">
-                    <img src="http://i.imgur.com/ZgTFFgQ.png" style="width:50%"/>
+                    <img src="logo.png" style="width:50%"/>
                          <br /> 
                         <br /> 
                         <hr  width="5%" />
