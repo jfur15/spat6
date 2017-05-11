@@ -33,6 +33,7 @@
         }
 
   </style>
+<link rel="icon" href="logomini.png">
 </head> 
 <body>
     <form runat="server">       

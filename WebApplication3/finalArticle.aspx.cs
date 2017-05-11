@@ -11,13 +11,13 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            TextBox n = new TextBox();
-            n.CssClass = "form-control style=height: 100%";
-            n.TextMode = TextBoxMode.MultiLine;
-            n.ReadOnly = true;
-            n.Rows = 32;
-            n.Text = this.Context.Items["newkey"].ToString();
-            finalDiv.Controls.Add(n);
+            //TextBox n = new TextBox();
+            //n.CssClass = "form-control style=height: 100%";
+            //n.TextMode = TextBoxMode.MultiLine;
+            //n.ReadOnly = true;
+            //n.Rows = 32;
+            finalDiv.InnerText = this.Context.Items["newkey"].ToString();
+            //finalDiv.Controls.Add(n);
         }
     }
 }

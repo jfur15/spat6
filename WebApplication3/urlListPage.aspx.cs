@@ -61,7 +61,7 @@ namespace WebApplication3
         }
 
         //This produces
-        protected List<Article> articleInit(List<string> urls)
+        protected void articleInit(List<string> urls)
         {
             List<Article> allArticles = new List<Article>();
             List<ComparisonPool> pooledParagraphs = new List<ComparisonPool>();
@@ -168,7 +168,9 @@ namespace WebApplication3
 
             this.Context.Items["newkey"] = finalArticletext;
             Server.Transfer("finalArticle.aspx");
-            return allArticles;
+            //return allArticles;
+            //This function can be void becuase output is done when we switch to a different page
+            //no need to retain the allArticles variable
 
             }
 

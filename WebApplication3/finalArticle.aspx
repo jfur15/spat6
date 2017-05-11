@@ -27,10 +27,27 @@
             margin-top:2%;
         }
 
+        .form-group{
+            margin-top:2%;
+        }
+        nav{
+            max-height:20px;
+        }
+
   </style>
+<link rel="icon" href="logomini.png">
 </head> 
 <body>
-    <form runat="server">       
+    <form runat="server"> 
+        <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Research Assistant" src="logomini.png">
+                </a>
+            </div>
+        </div>
+        </nav>   
         <div class="container-fluid">
 
             <div class="row">

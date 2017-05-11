@@ -11,7 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
       		body {
-			background: url(write.jpg)   no-repeat center center fixed; 
+			background: url(write.jpg)  no-repeat center center fixed; 
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
@@ -29,6 +29,7 @@
         }
 
   </style>
+<link rel="icon" href="logomini.png">
 </head> 
 <body>
     <form runat="server">       

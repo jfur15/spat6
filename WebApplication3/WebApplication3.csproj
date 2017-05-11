@@ -218,10 +218,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="finalTest.aspx" />
     <Content Include="finalArticle.aspx" />
     <Content Include="packages.config" />
     <Content Include="splashPage.aspx" />
-    <Content Include="WebForm5.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -236,6 +236,13 @@
   <ItemGroup>
     <Compile Include="Article.cs" />
     <Compile Include="ComparisonPool.cs" />
+    <Compile Include="finalTest.aspx.cs">
+      <DependentUpon>finalTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="finalTest.aspx.designer.cs">
+      <DependentUpon>finalTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="finalArticle.aspx.cs">
       <DependentUpon>finalArticle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -259,13 +266,6 @@
     </Compile>
     <Compile Include="splashPage.aspx.designer.cs">
       <DependentUpon>splashPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm5.aspx.cs">
-      <DependentUpon>WebForm5.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm5.aspx.designer.cs">
-      <DependentUpon>WebForm5.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
