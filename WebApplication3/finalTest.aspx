@@ -8,6 +8,23 @@
   <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+      function selectText() {
+          if (document.selection) {
+              var range = document.body.createTextRange();
+              range.moveToElementText(document.getElementById("finalTextBox"));
+              range.select();
+          } else if (window.getSelection) {
+              var range = document.createRange();
+              range.selectNode(document.getElementById("finalTextBox"));
+              window.getSelection().addRange(range);
+          }
+          
+      }
+  </script>
+
   <style>
       		body {
 			background: url( write.jpg) no-repeat center center fixed; 
@@ -26,7 +43,9 @@
             margin-top:2%;
         }
 
-
+        #finalTextBox{
+            height:100%;
+        }
 
         .navbar { min-height:50px; height: 50px; }
         .row{margin-top: 50px;}
@@ -66,7 +85,7 @@
                 <li><asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Edit inputs" /></li>
                 <a href="urlListPage.aspx" class ="btn btn-primary btn-block" role="button">Create new article</a>
                 <li><asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Download article" /></li>
-                <li><asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Select all" OnClick="btnSelectAll"/></li>
+                <li><asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Select all" onClientClick="selectText(); return false"/></li>
 
             </ul>
 
@@ -80,14 +99,16 @@
                 
                 <div class="col-lg-2 affix">
                     
-                    <button class="btn btn-primary btn-lg btn-block">Trump kicks puppies</button>
-                    <button class="btn btn-primary btn-lg btn-block">Trump chokes kittens</button>
-                    <button class="btn btn-primary btn-lg btn-block">Trump closes schools</button>
+                    <button class="btn btn-primary btn-block">Trump kicks puppies</button>
+                    <button class="btn btn-primary btn-block">Trump chokes kittens</button>
+                    <button class="btn btn-primary btn-block">Trump closes schools</button>
                     <hr />
-                    <button class="btn btn-primary btn-lg btn-block">Edit article inputs</button>
+                    <button class="btn btn-primary btn-block">Edit article inputs</button>
+                    <asp:Button runat="server" CssClass="btn btn-primary btn-block" onclick="btnDownloadArticle" Text="Download article" />
+                    <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Select all" onClientClick="selectText(); return false"/>
                     
-                    <button class="btn btn-primary btn-lg btn-block">Download article</button>
-                    <button class="btn btn-primary btn-lg btn-block">Select All</button>
+                    <a href="urlListPage.aspx" class ="btn btn-primary btn-block" role="button" onclick="return confirm('Are you sure you want to destroy this article?');">Create new article</a>
+
                 </div>
             </div>
 
@@ -99,7 +120,6 @@
                 </div>
 
                 <div style="font-size:large;" class="col-lg-8" id="finalDiv" runat="server">
-                 
                 </div>
 
                 <div class="col-lg-2">
