@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,7 +16,8 @@ namespace WebApplication3
             string articleText = "";
             if(!IsPostBack)
             {
-                ViewState["Article"] = this.Context.Items["newkey"].ToString();
+                if (this.Context.Items["newkey"] != null) ViewState["Article"] = this.Context.Items["newkey"].ToString();
+                if (this.Context.Items["URLFinal"] != null) ViewState["URLFinal"] = this.Context.Items["URLFinal"];
             }
             if(ViewState["Article"] != null)
             {
@@ -62,16 +64,16 @@ namespace WebApplication3
             response.TransmitFile(FilePath);
             response.Flush();
             response.End();
-
-
-            Context.Items["newkey"] = finalDiv.Controls.OfType<TextBox>().First().Text;
-
+            
 
 
         }
+        
         protected void btnEditInputs(object sender, EventArgs e)
         {
-
+            //TODO: Messagebox "Do you wanna destroy"
+            this.Context.Items["URLsback"] = (List<string>)ViewState["URLFinal"];
+            Server.Transfer("urlListPage.aspx");
         }
     }
 

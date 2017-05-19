@@ -48,6 +48,7 @@ namespace WebApplication3
         }
         protected void btnEditInputs(object sender, EventArgs e)
         {
+            var x = ViewState["Variable"];
 
         }
     }
