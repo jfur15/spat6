@@ -12,6 +12,18 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string articleText = "";
+            if(!IsPostBack)
+            {
+                ViewState["Article"] = this.Context.Items["newkey"].ToString();
+            }
+            if(ViewState["Article"] != null)
+            {
+                articleText = (string)ViewState["Article"];
+            }
+
+
+            
             TextBox n = new TextBox();
             n.CssClass = "form-control style=height: 100%";
             n.TextMode = TextBoxMode.MultiLine;
@@ -19,10 +31,7 @@ namespace WebApplication3
             n.Rows = 32;
             n.ID = "finalTextBox";
 
-            if (Context.Items["newkey"] != null)
-            {
-                n.Text = this.Context.Items["newkey"].ToString();
-            }
+            n.Text = articleText;
 
             finalDiv.Controls.Add(n);
         }
@@ -34,8 +43,13 @@ namespace WebApplication3
 
             StreamWriter w;
             w = File.CreateText(FilePath);
-
-            w.Write(finalDiv.Controls.OfType<TextBox>().First().Text);
+            TextBox thebox =  (TextBox)Page.FindControl("finalTextBox");
+            string theboxtext = ViewState["Article"].ToString();
+            if (thebox != null)
+            {
+                theboxtext = thebox.Text;
+            }
+            w.Write(theboxtext);
 
             w.Flush();
             w.Close();

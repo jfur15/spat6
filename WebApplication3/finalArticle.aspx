@@ -25,6 +25,15 @@
       }
   </script>
 
+      <script type="text/javascript">
+          function LinkToPage() {
+
+          if (confirm('Are you sure you want to destroy this article?')) {
+              window.location.href = 'urlListPage.aspx';
+          }
+      }
+    </script>
+
   <style>
       		body {
 			background: url( write.jpg) no-repeat center center fixed; 
@@ -41,16 +50,19 @@
         }
         .btn{
             margin-top:2%;
+            vertical-align:bottom;
+            font-size: 1vw;
+            width: 1vw;
         }
 
         #finalTextBox{
             height:100%;
         }
 
-        .navbar { min-height:50px; height: 50px; }
-        .row{margin-top: 50px;}
-        .col-lg-2{margin-top: 50px;}
-        .navbar > .navbar-brand{
+        /*.navbar { min-height:50px; height: 50px; }*/
+        /*.row{margin-top: 50px;}
+        .col-lg-2{margin-top: 20px;}*/
+        /*.navbar > .navbar-brand{
             padding: 0.25% 0% 0.25% 0%;
             margin-right:1%;
              object-fit:contain;
@@ -63,7 +75,7 @@
         .dropdown-menu > li{
             margin-left:2%; 
             margin-right:2%;
-        }
+        }*/
         
         .affix > .btn{
             vertical-align:bottom;
@@ -73,7 +85,7 @@
 </head> 
 <body>
     <form runat="server"> 
-        <nav class="navbar navbar-default  navbar-fixed-top">
+<%--        <nav class="navbar navbar-default  navbar-fixed-top">
 
 
             <button style="margin:0.5% 1% 0% 1%" type="button" data-toggle="dropdown"  class="btn btn-primary navbar-btn dropdown-toggle "><span class="glyphicon glyphicon-option-horizontal"></span></button> 
@@ -93,26 +105,35 @@
                 <img alt="Research Assistant" src="logomini.png">
             </div>
  
-        </nav>   
+        </nav>   --%>
         <div class="container-fluid">
-            <div class="row">
-                
-                <div class="col-lg-2 affix">
-                    
-                    <button class="btn btn-primary btn-block">Trump kicks puppies</button>
-                    <button class="btn btn-primary btn-block">Trump chokes kittens</button>
-                    <button class="btn btn-primary btn-block">Trump closes schools</button>
-                    <hr />
-                    <button class="btn btn-primary btn-block">Edit article inputs</button>
-                    <asp:Button runat="server" CssClass="btn btn-primary btn-block" onclick="btnDownloadArticle" Text="Download article" />
-                    <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Select all" onClientClick="selectText(); return false"/>
-                    
-                    <a href="urlListPage.aspx" class ="btn btn-primary btn-block" role="button" onclick="return confirm('Are you sure you want to destroy this article?');">Create new article</a>
+            <div class="row">              
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 1" />
+                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 2" />
+                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 3" />
+                        <hr />
 
-                </div>
-            </div>
+                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" onClientClick="LinkToPage(); return false" Text="Edit Article Inputs" />
+                        <%--<a href="urlListPage.aspx" class ="btn btn-primary btn-block" role="button" onclick="return confirm('Are you sure you want to destroy this article?');">Edit Article Inputs</a>--%>
+                        
+                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" onclick="btnDownloadArticle" Text="Download article" />
+                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Select all" onClientClick="selectText(); return false"/>
 
-            <div class="row">
+                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" onClientClick="LinkToPage(); return false" Text="Create New Article" />
+                        <%--<a href="urlListPage.aspx" class ="btn btn-primary btn-block" role="button" onclick="return confirm('Are you sure you want to destroy this article?');">Create new article</a>--%>
+                    
+                    </div>
+                    
+                    <div style="font-size:large;" class="col-xs-10 col-sm-10 col-md-10 col-lg-10" id="finalDiv" runat="server"></div>
+            </div>    
+       </div>
+    </form>
+</body>
+</html>
+
+
+<%--            <div class="row">
 
                 <div class="col-lg-2">
 
@@ -127,8 +148,4 @@
                     <br />
                 </div>
 
-            </div>
-        </div>
-    </form>
-</body>
-</html>
+            </div>--%>

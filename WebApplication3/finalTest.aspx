@@ -48,8 +48,7 @@
         }
 
         .navbar { min-height:50px; height: 50px; }
-        .row{margin-top: 50px;}
-        .col-lg-2{margin-top: 50px;}
+
         .navbar > .navbar-brand{
             padding: 0.25% 0% 0.25% 0%;
             margin-right:1%;
@@ -68,36 +67,18 @@
         .affix > .btn{
             vertical-align:bottom;
         }
+    
+
   </style>
 <link rel="icon" href="logomini.png">
 </head> 
 <body>
     <form runat="server"> 
-        <nav class="navbar navbar-default  navbar-fixed-top">
 
-
-            <button style="margin:0.5% 1% 0% 1%" type="button" data-toggle="dropdown"  class="btn btn-primary navbar-btn dropdown-toggle "><span class="glyphicon glyphicon-option-horizontal"></span></button> 
-            <ul class="dropdown-menu">
-                <li><asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 1" /></li>
-                <li><asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 2" /></li>
-                <li><asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 3" /></li>
-                <li role="separator" class="divider"></li>
-                <li><asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Edit inputs" /></li>
-                <a href="urlListPage.aspx" class ="btn btn-primary btn-block" role="button">Create new article</a>
-                <li><asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Download article" /></li>
-                <li><asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Select all" onClientClick="selectText(); return false"/></li>
-
-            </ul>
-
-            <div class="navbar-brand navbar-right">
-                <img alt="Research Assistant" src="logomini.png">
-            </div>
- 
-        </nav>   
         <div class="container-fluid">
             <div class="row">
                 
-                <div class="col-lg-2 affix">
+                <div class="col-lg-3 affix">
                     
                     <button class="btn btn-primary btn-block">Trump kicks puppies</button>
                     <button class="btn btn-primary btn-block">Trump chokes kittens</button>
@@ -114,15 +95,15 @@
 
             <div class="row">
 
-                <div class="col-lg-2">
+                <div class="col-lg-3">
 
                     <br />
                 </div>
 
-                <div style="font-size:large;" class="col-lg-8" id="finalDiv" runat="server">
+                <div style="font-size:large;" class="col-lg-6" id="finalDiv" runat="server">
                 </div>
 
-                <div class="col-lg-2">
+                <div class="col-lg-3">
 
                     <br />
                 </div>
