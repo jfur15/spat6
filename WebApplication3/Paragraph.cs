@@ -21,6 +21,7 @@ namespace WebApplication3
         public List<string> listOrganizations;
         public List<string> listPersons;
         public List<string> listDates;
+        //public string[] listWords;
         public string Text { get { return text; } set { text = value; } }
         public bool Deleted { get { return deleted; } set { deleted = value; } }
         public int Grade { get { return grade; } }
@@ -32,10 +33,24 @@ namespace WebApplication3
             listOrganizations = new List<string>();
             listPersons = new List<string>();
             listDates = new List<string>();
+            //listWords = text.Split(' ');
             xmlText = NLPObjs.cfier.classifyWithInlineXML(System.Text.RegularExpressions.Regex.Replace(text, "<|>", ""));
             entitizeParagraph();
 
             gradeParagraph();
+
+
+
+            //List<string> listWords = new List<string>();
+
+            //char[] sentenceDelimiters = { ' ' };
+            
+
+
+
+            
+
+
 
             /*
             sentences = new List<Sentence>();

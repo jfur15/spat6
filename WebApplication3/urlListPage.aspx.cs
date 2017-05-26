@@ -44,6 +44,7 @@ namespace WebApplication3
             //TODO: Check for empty text boxes
             articleInit(divTextbox.Controls.OfType<TextBox>().Select(o =>o.Text).ToList());
         }
+
         protected void clearbutton_click(object sender, EventArgs e)
         {
             foreach (TextBox t in divTextbox.Controls.OfType<TextBox>())
@@ -60,17 +61,17 @@ namespace WebApplication3
 
         }
 
-        //This produces
+        // Clean the URL's, throw out errors for improper ones, create articles for remainder
+        /// Then instantiate each Article object and return as a list to be output to GUI and/or condensed into finalarticle:
+        /// Retrieves text from webpage in paragraph form based on URL and assign to passed in Article object
         protected void articleInit(List<string> urls)
         {
             List<Article> allArticles = new List<Article>();
             List<ComparisonPool> pooledParagraphs = new List<ComparisonPool>();
-            //TODO: clean the URL's, throw out improper ones
 
+            // Clean the URL's, throw out errors for improper ones
             foreach (String s in urls)
             {
-                //Change color of textbox?
-
                 // Is anything in the textbox?
                 if (!string.IsNullOrEmpty(s))
                 {
@@ -83,8 +84,6 @@ namespace WebApplication3
                     }
                     else
                     {
-                        //Change color of TextBox?
-
                         //Alert user of invalid input
                         String x = "Invalid input: " + s + " is not a valid URL.";
                         ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + x  + "');", true);
@@ -92,18 +91,14 @@ namespace WebApplication3
                 }
             }
 
-
-            //then Pass them to URLGet
+            // Then Pass them to URLGet
             for (int i = 0; i < allArticles.Count; i++) { URLGet(allArticles[i]); }
 
-            //then instantiate each Article object and return as a list to be output to GUI and/or condensed into finalarticle
-
-
+            //then instantiate each Article object and return as a list to be output to GUI and/or condensed into finalarticle:
+            //// Retrieves text from webpage in paragraph form based on URL and assign to passed in Article object
             tempSentenceProcess(allArticles);
 
-            // Format output to GUI. Create/Label a tab for each article and output text in paragraph form to RichTextBox in each.
-            // Also sentence tabs with ordered scores and shit
-            int idx = 1;
+            // instantiate classifiers, pool paragraphs with classifers present
             foreach (Article A in allArticles)
             {
                 foreach (Paragraph p in A.paragraphs)
@@ -118,37 +113,31 @@ namespace WebApplication3
 
                     foreach (string entity in cls[i])
                     {
-
-                        if (p.Text.Contains("attacks on the press"))
+                        if (classiferNames[i] == "PERSON" || classiferNames[i] == "LOCATION" || classiferNames[i] == "ORGANIZATION")
                         {
-                            int x = 1;
-                        }
-                            if (classiferNames[i] == "PERSON" || classiferNames[i] == "LOCATION" || classiferNames[i] == "ORGANIZATION")
+                            bool existingClassifier = false;
+                            foreach (ComparisonPool C in pooledParagraphs)
                             {
-
-                                bool existingClassifier = false;
-                                foreach (ComparisonPool C in pooledParagraphs)
+                                if (C.Classifier == entity)
                                 {
-                                    if (C.Classifier == entity)
+                                    if (!paragraphAdded)
                                     {
-                                        if (!paragraphAdded)
-                                        {
-                                            C.addParagraph(p);
-                                            paragraphAdded = true;
-                                        }
-                                        existingClassifier = true;
-                                        break;
+                                        C.addParagraph(p);
+                                        paragraphAdded = true;
                                     }
-                                }
-                                if (existingClassifier == false && !paragraphAdded)
-                                {
-                                    ComparisonPool temp = new ComparisonPool(entity);
-                                    pooledParagraphs.Add(temp);
-                                    temp.addParagraph(p);
-                                    paragraphAdded = false;
-                                    i = cls.Length;
+                                    existingClassifier = true;
                                     break;
                                 }
+                            }
+                            if (existingClassifier == false && !paragraphAdded)
+                            {
+                                ComparisonPool temp = new ComparisonPool(entity);
+                                pooledParagraphs.Add(temp);
+                                temp.addParagraph(p);
+                                paragraphAdded = false;
+                                i = cls.Length;
+                                break;
+                            }
                             }
                         }
                     }
@@ -159,12 +148,54 @@ namespace WebApplication3
 
             //HERE IS THE FINAL OUTPUT OK
             string finalArticletext = "";
-            foreach (Paragraph pp in comparison(pooledParagraphs))
-            {
-                finalArticletext += pp.Text + "\n\n\n";
-            }
+            int numSameWords = 0;
+            List<Paragraph> tempParagraphs = new List<Paragraph>();
+            tempParagraphs = comparison(pooledParagraphs);
 
-            
+            //tempParagraphs is the final list of paragraphs
+            // for length of tempParagraphs loop through each paragraph
+            // outer loop
+            for (int i = 0; i < tempParagraphs.Count; i++)
+            {
+                // for first paragraph, split into words and loop through each one
+                string[] listWords1 = tempParagraphs[i].Text.Split(' ');
+
+                // for length of tempParagraphs loop through each paragraph
+                // inner loop
+                for (int j = 0; j < tempParagraphs.Count; j++)
+                {
+                    // loop through all paragraphs comparing each one
+
+                    // for second paragraph, split into words and loop through each one
+                    string[] listWords2 = tempParagraphs[j].Text.Split(' ');
+
+                    // for length of listWords1, loop through each word
+                    // Outer loop
+                    for (int k = 0; k < 5; k++)
+                    {
+                        // for length of listWords2, loop through each word
+                        // loop through all words comparing each one
+                        // Inner loop
+                        if (numSameWords >= 5) { j = tempParagraphs.Count; }
+
+                        numSameWords = 0;
+
+                        for (int l = 0; l < 5; l++)
+                        {
+                            if (listWords1[k] == listWords2[l])
+                            {
+                                ++numSameWords;
+                                if (numSameWords >= 5) { k = 5; }
+                            }
+                        }
+                    }
+                }
+
+                if (numSameWords < 5)
+                {
+                    if (tempParagraphs[i].Text.Length > 75) { finalArticletext += tempParagraphs[i].Text + "\n\n\n"; }
+                }
+            }
 
             this.Context.Items["newkey"] = finalArticletext;
             Server.Transfer("finalArticle.aspx");

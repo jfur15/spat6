@@ -218,9 +218,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="finalTest.aspx" />
     <Content Include="finalArticle.aspx" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="splashPage.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -236,13 +237,6 @@
   <ItemGroup>
     <Compile Include="Article.cs" />
     <Compile Include="ComparisonPool.cs" />
-    <Compile Include="finalTest.aspx.cs">
-      <DependentUpon>finalTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="finalTest.aspx.designer.cs">
-      <DependentUpon>finalTest.aspx</DependentUpon>
-    </Compile>
     <Compile Include="finalArticle.aspx.cs">
       <DependentUpon>finalArticle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
