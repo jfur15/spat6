@@ -25,14 +25,26 @@
       }
   </script>
 
-      <script type="text/javascript">
-          function LinkToPage() {
+<script type="text/javascript">
+    function LinkToPage() {
 
-          if (confirm('Are you sure you want to destroy this article?')) {
-              window.location.href = 'urlListPage.aspx';
-          }
-      }
-    </script>
+        if (confirm('Are you sure you want to destroy this article?')) {
+            window.location.href = 'urlListPage.aspx';
+        }
+    }
+</script>
+<script type="text/javascript">
+    function editInputs() {
+
+        if (confirm('Are you sure?????')) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>
+
 
   <style>
       		body {
@@ -85,6 +97,11 @@
 </head> 
 <body>
     <form runat="server"> 
+
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+        </asp:ScriptManager>
+
+
 <%--        <nav class="navbar navbar-default  navbar-fixed-top">
 
 
@@ -114,7 +131,7 @@
                         <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 3" />
                         <hr />
 
-                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" onClientClick="LinkToPage(); return false" Text="Edit Article Inputs" />
+                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" onClick="btnEditInputs" OnClientClick="return editInputs();"  Text="Edit Article Inputs" />
                         <%--<a href="urlListPage.aspx" class ="btn btn-primary btn-block" role="button" onclick="return confirm('Are you sure you want to destroy this article?');">Edit Article Inputs</a>--%>
                         
                         <asp:Button runat="server" CssClass="btn btn-primary btn-block" onclick="btnDownloadArticle" Text="Download article" />

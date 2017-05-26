@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
   <style>
       		body {
 			background: url( write.jpg) no-repeat center center fixed; 
@@ -29,6 +33,7 @@
 
         .input-group{
             padding: 10%;
+            border-radius:8% 2%;
              background-color: rgba(225,225,225, 0.4);
         }
 

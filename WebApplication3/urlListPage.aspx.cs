@@ -33,7 +33,25 @@ namespace WebApplication3
 
             NLPObjs.tizer = PTBTokenizer.factory(new CoreLabelTokenFactory(), "asciiQuotes");
 
-            
+            if (this.Context.Items["URLsback"] != null)
+            {
+                List<String> theUrls = (List<String>)this.Context.Items["URLsback"];
+                List<TextBox> theBoxes = divTextbox.Controls.OfType<TextBox>().ToList<TextBox>();
+
+                for (int i = 0; i < theUrls.Count; i++)
+                {
+                    if (i <= theBoxes.Count)
+                    {
+                        theBoxes[i].Text = theUrls[i];
+                    }
+                }
+            }
+        }
+
+
+        private static bool EmptyString(String s)
+        {
+            return s.Equals("");
         }
 
         protected void submitbutton_Click(object sender, EventArgs e)
@@ -42,9 +60,18 @@ namespace WebApplication3
             //this is good
 
             //TODO: Check for empty text boxes
-            articleInit(divTextbox.Controls.OfType<TextBox>().Select(o =>o.Text).ToList());
+            List<string> tlist = divTextbox.Controls.OfType<TextBox>().Select(o => o.Text).ToList();
+
+            tlist.RemoveAll(EmptyString);
+
+
+            articleInit(tlist);
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3f98d72abc4d6f78177cbdfc6dd4c5b473aefe17
         protected void clearbutton_click(object sender, EventArgs e)
         {
             foreach (TextBox t in divTextbox.Controls.OfType<TextBox>())
@@ -55,9 +82,8 @@ namespace WebApplication3
 
         protected void buttonPreload_Click(object sender, EventArgs e)
         {
-            List<string> urls = new List<string>(new string[] { "https://www.nytimes.com/2017/02/24/us/politics/white-house-sean-spicer-briefing.html", "http://thedailybanter.com/2017/02/trump-administration-bans-cnn/",  " http://www.politicususa.com/2017/02/24/trump-hide-truth-banning-media-write-scandal-press-briefing.html", " http://www.politico.com/story/2017/02/reporters-blocked-white-house-gaggle-235360",  " https://www.washingtonpost.com/lifestyle/style/cnn-new-york-times-other-media-barred-from-white-house-briefing/2017/02/24/4c22f542-fad5-11e6-be05-1a3817ac21a5_story.html","http://www.foxnews.com/politics/2017/02/24/media-outlets-accuse-white-house-blocking-certain-press-from-covering-event.html"," http://www.vox.com/policy-and-politics/2017/2/24/14729078/white-house-banned-media-outlets-press-briefing", "  https://www.conservativereview.com/commentary/2017/02/media-freak-out-when-white-house-blocks-cnn-and-others-from-press-gaggle", "  https://www.theguardian.com/us-news/2017/feb/24/media-blocked-white-house-briefing-sean-spicer", " http://www.huffingtonpost.com/entry/white-house-bars-news-organizations_us_58b08a76e4b0a8a9b78213ae"});
-
-            articleInit(urls);
+            this.Context.Items["URLsback"] = new List<string>(new string[] { "https://www.nytimes.com/2017/02/24/us/politics/white-house-sean-spicer-briefing.html", "http://thedailybanter.com/2017/02/trump-administration-bans-cnn/",  " http://www.politicususa.com/2017/02/24/trump-hide-truth-banning-media-write-scandal-press-briefing.html", " http://www.politico.com/story/2017/02/reporters-blocked-white-house-gaggle-235360",  " https://www.washingtonpost.com/lifestyle/style/cnn-new-york-times-other-media-barred-from-white-house-briefing/2017/02/24/4c22f542-fad5-11e6-be05-1a3817ac21a5_story.html","http://www.foxnews.com/politics/2017/02/24/media-outlets-accuse-white-house-blocking-certain-press-from-covering-event.html"," http://www.vox.com/policy-and-politics/2017/2/24/14729078/white-house-banned-media-outlets-press-briefing", "  https://www.conservativereview.com/commentary/2017/02/media-freak-out-when-white-house-blocks-cnn-and-others-from-press-gaggle", "  https://www.theguardian.com/us-news/2017/feb/24/media-blocked-white-house-briefing-sean-spicer", " http://www.huffingtonpost.com/entry/white-house-bars-news-organizations_us_58b08a76e4b0a8a9b78213ae"});
+            Server.Transfer("urlListPage.aspx");
 
         }
 
@@ -198,6 +224,7 @@ namespace WebApplication3
             }
 
             this.Context.Items["newkey"] = finalArticletext;
+            this.Context.Items["URLFinal"] = urls; ;
             Server.Transfer("finalArticle.aspx");
             //return allArticles;
             //This function can be void becuase output is done when we switch to a different page

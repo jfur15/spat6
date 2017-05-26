@@ -56,7 +56,6 @@
                         
 </h4>
                         <hr  width="5%" />
-                    <a href="urlListPage.aspx" class="btn btn-primary btn-md" runat="server">Plans start at $99/yr </a>
                          <a href="urlListPage.aspx" class="btn btn-primary btn-md" runat="server">Get started free </a>    
                      </div>
                     </div>
