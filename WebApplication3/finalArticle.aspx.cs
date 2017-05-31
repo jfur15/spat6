@@ -13,7 +13,8 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //WE set this to current directory as a debug thing
+            //we set this to current directory as a debug thing
+            Directory.SetCurrentDirectory("\\");
             string articleText = Directory.GetCurrentDirectory();
             if(!IsPostBack)
             {
@@ -22,7 +23,7 @@ namespace WebApplication3
             }
             if(ViewState["Article"] != null)
             {
-                articleText = (string)ViewState["Article"];
+                articleText = (string)ViewState["Article"];//The debug thing gets overwritten here so it's OK
             }
 
 
@@ -34,7 +35,7 @@ namespace WebApplication3
             n.Rows = 32;
             n.ID = "finalTextBox";
 
-            n.Text = articleText;//The debug thing gets overwritten here so it's OK
+            n.Text = articleText;
 
             finalDiv.Controls.Add(n);
         }
