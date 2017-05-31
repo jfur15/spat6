@@ -223,6 +223,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="splashPage.aspx" />
+    <Content Include="english.muc.7class.nodistsim.crf.ser.gz">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
