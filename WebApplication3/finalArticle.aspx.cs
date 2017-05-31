@@ -15,7 +15,7 @@ namespace WebApplication3
         {
             //we set this to current directory as a debug thing
             Directory.SetCurrentDirectory("\\");
-            string articleText = Directory.GetCurrentDirectory();
+            string articleText = Directory.GetCurrentDirectory() + "\n" + Directory.GetDirectories(Directory.GetCurrentDirectory());
             if(!IsPostBack)
             {
                 if (this.Context.Items["newkey"] != null) ViewState["Article"] = this.Context.Items["newkey"].ToString();
