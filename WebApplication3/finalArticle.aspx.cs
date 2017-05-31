@@ -15,7 +15,7 @@ namespace WebApplication3
         {
             //we set this to current directory as a debug thing
             Directory.SetCurrentDirectory("\\");
-            string[] xd = Directory.GetDirectories(Directory.GetCurrentDirectory(), "*");
+            string[] xd = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.*", SearchOption.AllDirectories);
             string articleText = "";
             foreach (string dir in xd)
             {
