@@ -36,7 +36,7 @@
 <script type="text/javascript">
     function editInputs() {
 
-        if (confirm('Are you sure?????')) {
+        if (confirm('Are you certain you want to destroy this article')) {
             return true;
         }
         else {
