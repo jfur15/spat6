@@ -68,10 +68,6 @@ namespace WebApplication3
             articleInit(tlist);
         }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3f98d72abc4d6f78177cbdfc6dd4c5b473aefe17
         protected void clearbutton_click(object sender, EventArgs e)
         {
             foreach (TextBox t in divTextbox.Controls.OfType<TextBox>())
@@ -211,7 +207,11 @@ namespace WebApplication3
                             if (listWords1[k] == listWords2[l])
                             {
                                 ++numSameWords;
-                                if (numSameWords >= 5) { k = 5; }
+                                if (numSameWords >= 5)
+                                {
+                                    k = 5;
+                                    tempParagraphs[i].post = false;
+                                }
                             }
                         }
                     }
@@ -219,7 +219,13 @@ namespace WebApplication3
 
                 if (numSameWords < 5)
                 {
-                    if (tempParagraphs[i].Text.Length > 75) { finalArticletext += tempParagraphs[i].Text + "\n\n\n"; }
+                    if(tempParagraphs[i].post == true)
+                    {
+                        if (tempParagraphs[i].Text.Length > 75) {
+                            finalArticletext += tempParagraphs[i].Text + "\n\n\n";
+                            tempParagraphs[i].post = false;
+                        }
+                    }   
                 }
             }
 
