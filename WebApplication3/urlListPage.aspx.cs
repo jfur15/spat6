@@ -29,7 +29,9 @@ namespace WebApplication3
         protected void Page_Load(object sender, EventArgs e)
         {
             //Put /edu in C:/Program Files (x86)/IIS Express
-            NLPObjs.cfier = CRFClassifier.getClassifierNoExceptions("/english.muc.7class.nodistsim.crf.ser.gz");
+            Directory.SetCurrentDirectory("\\");
+
+            NLPObjs.cfier = CRFClassifier.getClassifierNoExceptions("\\home\\site\\wwwroot\\english.muc.7class.nodistsim.crf.ser.gz");
 
             NLPObjs.tizer = PTBTokenizer.factory(new CoreLabelTokenFactory(), "asciiQuotes");
 
