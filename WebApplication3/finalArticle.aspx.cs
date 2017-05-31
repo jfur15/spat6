@@ -13,8 +13,14 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //we set this to current directory as a debug thing
+            Directory.SetCurrentDirectory("\\");
+            string[] xd = Directory.GetDirectories(Directory.GetCurrentDirectory(), "*");
             string articleText = "";
-
+            foreach (string dir in xd)
+            {
+                articleText += dir + "\n";
+            }
             if (!IsPostBack)
             {
                 if (this.Context.Items["newkey"] != null) ViewState["Article"] = this.Context.Items["newkey"].ToString();
@@ -22,7 +28,7 @@ namespace WebApplication3
             }
             if(ViewState["Article"] != null)
             {
-                articleText = (string)ViewState["Article"];
+                articleText = (string)ViewState["Article"];//The debug thing gets overwritten here so it's OK
             }
 
 

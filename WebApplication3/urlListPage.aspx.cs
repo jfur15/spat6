@@ -29,7 +29,7 @@ namespace WebApplication3
         protected void Page_Load(object sender, EventArgs e)
         {
             //Put /edu in C:/Program Files (x86)/IIS Express
-            NLPObjs.cfier = CRFClassifier.getClassifierNoExceptions("http://50.39.178.23/english.muc.7class.nodistsim.crf.ser.gz");
+            NLPObjs.cfier = CRFClassifier.getClassifierNoExceptions("/english.muc.7class.nodistsim.crf.ser.gz");
 
             NLPObjs.tizer = PTBTokenizer.factory(new CoreLabelTokenFactory(), "asciiQuotes");
 
