@@ -13,7 +13,8 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string articleText = "";
+            //WE set this to current directory as a debug thing
+            string articleText = Directory.GetCurrentDirectory();
             if(!IsPostBack)
             {
                 if (this.Context.Items["newkey"] != null) ViewState["Article"] = this.Context.Items["newkey"].ToString();
@@ -33,7 +34,7 @@ namespace WebApplication3
             n.Rows = 32;
             n.ID = "finalTextBox";
 
-            n.Text = articleText;
+            n.Text = articleText;//The debug thing gets overwritten here so it's OK
 
             finalDiv.Controls.Add(n);
         }
