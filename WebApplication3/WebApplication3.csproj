@@ -222,10 +222,7 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="splashPage.aspx" />
-    <Content Include="english.muc.7class.nodistsim.crf.ser.gz">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="default.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -257,12 +254,12 @@
     <Compile Include="urlListPage.aspx.designer.cs">
       <DependentUpon>urlListPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="splashPage.aspx.cs">
-      <DependentUpon>splashPage.aspx</DependentUpon>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="splashPage.aspx.designer.cs">
-      <DependentUpon>splashPage.aspx</DependentUpon>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
