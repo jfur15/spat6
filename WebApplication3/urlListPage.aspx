@@ -68,7 +68,14 @@
                     <asp:Button runat="server" OnClick="submitbutton_Click" class="btn btn-default" text="Submit"/>
                     <asp:Button runat="server" OnClick=" buttonPreload_Click" class="btn btn-default" text="Preload"/>
                     <asp:Button  runat="server" OnClick="clearbutton_click" class="btn btn-default" text="Clear All"/>
-
+                    
+                    <div style="text-align: center; margin-top:25%">
+                    <br />
+                    <h4 style="padding-left:5%;padding-right:5%;"> 
+                        *Improper Sources Will Not Yield Results. Input URL Must Contain Text. <br /> <br />
+                        
+</h4>
+                        </div>
                 </div>
                 <div class="col-lg-2">
                     <br />

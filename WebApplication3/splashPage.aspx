@@ -49,10 +49,9 @@
                         <hr  width="5%" />
                          <br />
                     <h4 style="padding-left:5%;padding-right:5%;"> 
-                        The objectively superior way to consume the mainstream media's lies.  <br /> <br />
-                        You give us the links, we do the rest. 
-                        Inform yourself using our scientifically sound methods. Insert catchy slogan here.
-                        Information wants to be free. <br />   <br />
+                        The Best Source of Information Is All of Them. <br /> <br />
+                        You Input Links, We Output Truth. 
+                        Inform yourself using our scientifically sound methods. <br />   <br />
                         
 </h4>
                         <hr  width="5%" />

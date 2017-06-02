@@ -28,7 +28,7 @@
 <script type="text/javascript">
     function LinkToPage() {
 
-        if (confirm('Are you sure you want to destroy this article?')) {
+        if (confirm('Are you certain you want to destroy this article?')) {
             window.location.href = 'urlListPage.aspx';
         }
     }
@@ -36,7 +36,7 @@
 <script type="text/javascript">
     function editInputs() {
 
-        if (confirm('Are you certain you want to destroy this article')) {
+        if (confirm('Are you certain you want to destroy this article?')) {
             return true;
         }
         else {
@@ -126,10 +126,10 @@
         <div class="container-fluid">
             <div class="row">              
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 1" />
+<%--                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 1" />
                         <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 2" />
                         <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 3" />
-                        <hr />
+                        <hr />--%>
 
                         <asp:Button runat="server" CssClass="btn btn-primary btn-block" onClick="btnEditInputs" OnClientClick="return editInputs();"  Text="Edit Article Inputs" />
                         <%--<a href="urlListPage.aspx" class ="btn btn-primary btn-block" role="button" onclick="return confirm('Are you sure you want to destroy this article?');">Edit Article Inputs</a>--%>
