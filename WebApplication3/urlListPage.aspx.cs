@@ -200,7 +200,7 @@ namespace WebApplication3
                         // for length of listWords2, loop through each word
                         // loop through all words comparing each one
                         // Inner loop
-                        if (numSameWords >= 5) { j = tempParagraphs.Count; }
+                        if (numSameWords > 5) { j = tempParagraphs.Count; }
 
                         numSameWords = 0;
 
@@ -209,7 +209,7 @@ namespace WebApplication3
                             if (listWords1[k] == listWords2[l])
                             {
                                 ++numSameWords;
-                                if (numSameWords >= 5)
+                                if (numSameWords > 5)
                                 {
                                     k = 5;
                                     tempParagraphs[i].post = false;
