@@ -52,7 +52,7 @@
 
                 <div class="col-lg-8">
                     
-                    <div id="divTextbox" runat="server" class="input-group" style="margin-top:20%">
+                    <div id="divTextbox" runat="server" class="input-group">
                     <h2">Article URLs</h2>
                         <asp:Textbox runat="server" CssClass="form-control" placeholder="URL" />
                         <asp:Textbox runat="server" CssClass="form-control" placeholder="URL" />
@@ -69,8 +69,7 @@
                     <asp:Button runat="server" OnClick=" buttonPreload_Click" class="btn btn-default" text="Preload"/>
                     <asp:Button  runat="server" OnClick="clearbutton_click" class="btn btn-default" text="Clear All"/>
                     
-                    <div style="text-align: center; margin-top:25%">
-                    <br />
+                    <div style="text-align: center">
                     <h4 style="padding-left:5%;padding-right:5%;"> 
                         *Improper Sources Will Not Yield Results. Input URL Must Contain Text. <br /> <br />
                         

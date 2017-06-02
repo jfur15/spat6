@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="col-lg-8">
-                    <div style="text-align: center; margin-top:25%">
+                    <div style="text-align: center">
                     <img src="logo.png" style="width:50%"/>
                          <br /> 
                         <br /> 
