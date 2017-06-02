@@ -63,7 +63,7 @@
         .btn{
             margin-top:2%;
             vertical-align:bottom;
-            font-size: 1vw;
+            /*font-size: 1vw;*/
             width: 1vw;
         }
 
@@ -125,7 +125,7 @@
         </nav>   --%>
         <div class="container-fluid">
             <div class="row">              
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <div class="col-sm-2 col-md-2 col-lg-2">
 <%--                        <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 1" />
                         <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 2" />
                         <asp:Button runat="server" CssClass="btn btn-primary btn-block" Text="Article 3" />
@@ -142,7 +142,7 @@
                     
                     </div>
                     
-                    <div style="font-size:large;" class="col-xs-10 col-sm-10 col-md-10 col-lg-10" id="finalDiv" runat="server"></div>
+                    <div style="font-size:large;" class="col-sm-10 col-md-10 col-lg-10" id="finalDiv" runat="server"></div>
             </div>    
        </div>
     </form>
