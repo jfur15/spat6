@@ -266,7 +266,11 @@ namespace WebApplication3
             // For each node in loaded webpage that is in paragraph tags (<p> </p>) add contained text to Article 
             // object's list of paragraphs
             //anArticle.title = System.Net.WebUtility.HtmlDecode(getHtmlWeb.DocumentNode.SelectSingleNode("//title").InnerText);
-            HtmlNodeCollection n = getHtmlWeb.DocumentNode.SelectNodes("//p | div[contains (@class, body)]");
+            HtmlNodeCollection n = new HtmlNodeCollection(getHtmlWeb.DocumentNode);
+                if(getHtmlWeb.DocumentNode.SelectNodes("//p | div[contains (@class, body)]") != null)
+            {
+                n = getHtmlWeb.DocumentNode.SelectNodes("//p | div[contains (@class, body)]");
+            }
             if (n.Count > 0)
             {
                 foreach (HtmlNode node in n)
