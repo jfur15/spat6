@@ -110,7 +110,7 @@ namespace WebApplication3
                     {
                         //Alert user of invalid input
                         String x = "Invalid input: " + s + " is not a valid URL.";
-                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + x  + "');", true);
+                        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + x + "');", true);
                     }
                 }
             }
@@ -131,37 +131,37 @@ namespace WebApplication3
                     List<string>[] cls = { p.listDates, p.listPersons, p.listLocations, p.listOrganizations };
                     string[] classiferNames = { "DATE", "PERSON", "LOCATION", "ORGANIZATION" };
 
-                bool paragraphAdded = false;
-                for (int i = 0; i < cls.Length; i++)
-                {
-
-                    foreach (string entity in cls[i])
+                    bool paragraphAdded = false;
+                    for (int i = 0; i < cls.Length; i++)
                     {
-                        if (classiferNames[i] == "PERSON" || classiferNames[i] == "LOCATION" || classiferNames[i] == "ORGANIZATION")
+
+                        foreach (string entity in cls[i])
                         {
-                            bool existingClassifier = false;
-                            foreach (ComparisonPool C in pooledParagraphs)
+                            if (classiferNames[i] == "PERSON" || classiferNames[i] == "LOCATION" || classiferNames[i] == "ORGANIZATION")
                             {
-                                if (C.Classifier == entity)
+                                bool existingClassifier = false;
+                                foreach (ComparisonPool C in pooledParagraphs)
                                 {
-                                    if (!paragraphAdded)
+                                    if (C.Classifier == entity)
                                     {
-                                        C.addParagraph(p);
-                                        paragraphAdded = true;
+                                        if (!paragraphAdded)
+                                        {
+                                            C.addParagraph(p);
+                                            paragraphAdded = true;
+                                        }
+                                        existingClassifier = true;
+                                        break;
                                     }
-                                    existingClassifier = true;
+                                }
+                                if (existingClassifier == false && !paragraphAdded)
+                                {
+                                    ComparisonPool temp = new ComparisonPool(entity);
+                                    pooledParagraphs.Add(temp);
+                                    temp.addParagraph(p);
+                                    paragraphAdded = false;
+                                    i = cls.Length;
                                     break;
                                 }
-                            }
-                            if (existingClassifier == false && !paragraphAdded)
-                            {
-                                ComparisonPool temp = new ComparisonPool(entity);
-                                pooledParagraphs.Add(temp);
-                                temp.addParagraph(p);
-                                paragraphAdded = false;
-                                i = cls.Length;
-                                break;
-                            }
                             }
                         }
                     }
@@ -181,53 +181,66 @@ namespace WebApplication3
             // outer loop
             for (int i = 0; i < tempParagraphs.Count; i++)
             {
-                // for first paragraph, split into words and loop through each one
-                string[] listWords1 = tempParagraphs[i].Text.Split(' ');
-
-                // for length of tempParagraphs loop through each paragraph
-                // inner loop
-                for (int j = 0; j < tempParagraphs.Count; j++)
+                if (tempParagraphs[i].Text.Length > 75)
                 {
-                    // loop through all paragraphs comparing each one
+                    // for first paragraph, split into words and loop through each one
+                    string[] listWords1 = tempParagraphs[i].Text.Split(' ');
 
-                    // for second paragraph, split into words and loop through each one
-                    string[] listWords2 = tempParagraphs[j].Text.Split(' ');
-
-                    // for length of listWords1, loop through each word
-                    // Outer loop
-                    for (int k = 0; k < 5; k++)
+                    // for length of tempParagraphs loop through each paragraph
+                    // inner loop
+                    for (int j = 0; j < tempParagraphs.Count; j++)
                     {
-                        // for length of listWords2, loop through each word
-                        // loop through all words comparing each one
-                        // Inner loop
-                        if (numSameWords > 5) { j = tempParagraphs.Count; }
-
-                        numSameWords = 0;
-
-                        for (int l = 0; l < 5; l++)
+                        if (tempParagraphs[j].post == true)
                         {
-                            if (listWords1[k] == listWords2[l])
+                            if (tempParagraphs[j].Text.Length > 75)
                             {
-                                ++numSameWords;
-                                if (numSameWords > 5)
+
+                                // loop through all paragraphs comparing each one
+
+                                // for second paragraph, split into words and loop through each one
+                                string[] listWords2 = tempParagraphs[j].Text.Split(' ');
+
+                                // for length of listWords1, loop through each word
+                                // Outer loop
+                                for (int k = 0; k < 8; k++)
                                 {
-                                    k = 5;
-                                    tempParagraphs[i].post = false;
+                                    // for length of listWords2, loop through each word
+                                    // loop through all words comparing each one
+                                    // Inner loop
+                                    if (numSameWords > 5) { j = tempParagraphs.Count; }
+
+                                    numSameWords = 0;
+
+                                    for (int l = 0; l < 8; l++)
+                                    {
+
+                                        if (listWords1[k] == listWords2[l])
+                                        {
+                                            ++numSameWords;
+                                            if (numSameWords > 5)
+                                            {
+                                                tempParagraphs[i].post = false;
+                                                k = 8;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                else
+                {
+                    tempParagraphs[i].post = false;
+                }
 
                 if (numSameWords < 5)
                 {
-                    if(tempParagraphs[i].post == true)
+                    if (tempParagraphs[i].post == true)
                     {
-                        if (tempParagraphs[i].Text.Length > 75) {
-                            finalArticletext += tempParagraphs[i].Text + "\n\n\n";
-                            tempParagraphs[i].post = false;
-                        }
-                    }   
+                        tempParagraphs[i].post = false;
+                        finalArticletext += tempParagraphs[i].Text + "\n\n\n";
+                    }
                 }
             }
 

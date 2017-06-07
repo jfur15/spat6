@@ -21,7 +21,7 @@ namespace WebApplication3
         public List<string> listOrganizations;
         public List<string> listPersons;
         public List<string> listDates;
-        public bool post = true;
+        public bool post;
         //public string[] listWords;
         public string Text { get { return text; } set { text = value; } }
         public bool Deleted { get { return deleted; } set { deleted = value; } }
@@ -29,6 +29,8 @@ namespace WebApplication3
         public Paragraph(string aParagraph)
         {
             text = aParagraph;
+
+            post = true;
             deleted = false;
             listLocations = new List<string>();
             listOrganizations = new List<string>();
